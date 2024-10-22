@@ -47,10 +47,11 @@ fun MainNavHost(
     ) {
         composable("mainscreen") {
             MainScreen(
-                { navController.navigate("gamescreen") }
+                { navController.navigate("gamescreen?maxnum=100") }
             )
         }
-        composable("gamescreen") { GameScreen() }
+        composable("gamescreen?maxnum={maxnum}") {
+            GameScreen() }
     }
 }
 

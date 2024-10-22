@@ -13,6 +13,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import hu.bme.aut.highlowgame.ui.navigation.Game
+import hu.bme.aut.highlowgame.ui.navigation.Main
 import hu.bme.aut.highlowgame.ui.screen.GameScreen
 import hu.bme.aut.highlowgame.ui.screen.MainScreen
 import hu.bme.aut.highlowgame.ui.theme.HighLowGameTheme
@@ -37,20 +39,19 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainNavHost(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController(),
-    startDestination: String = "mainscreen"
+    navController: NavHostController = rememberNavController()
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = startDestination
+        startDestination = Main
     ) {
-        composable("mainscreen") {
+        composable<Main> {
             MainScreen(
-                { navController.navigate("gamescreen?maxnum=100") }
+                { navController.navigate(Game(100)) }
             )
         }
-        composable("gamescreen?maxnum={maxnum}") {
+        composable<Game> {
             GameScreen() }
     }
 }

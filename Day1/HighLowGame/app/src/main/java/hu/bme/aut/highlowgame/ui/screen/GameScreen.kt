@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -62,6 +63,7 @@ fun GameScreen(
         )
 
         Button(
+            modifier = Modifier.testTag("guessbtn"),
             enabled = !isErrorState,
             onClick = {
                 val myNum = myNumber.toInt()
